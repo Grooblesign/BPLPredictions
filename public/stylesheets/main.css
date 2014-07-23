@@ -1,0 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: aqua;
+	font-family: sans-serif;
+}
+h1 {
+	background-color: navy;
+	color: white;
+	padding: .75em;
+}
