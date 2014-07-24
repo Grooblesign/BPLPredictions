@@ -28,7 +28,7 @@ public class MatchesService {
 			
 			if (f.exists()) {
 				Logger.info("Loading file - " + f.getCanonicalPath());
-				in = new FileInputStream(f.getCanonicalPath());
+				in = new FileInputStream(f);
 			} else {
 				Logger.info("File not found - " + f.getCanonicalPath());
 			}
