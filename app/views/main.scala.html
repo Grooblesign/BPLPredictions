@@ -27,6 +27,9 @@
 		</div>
 		<div class="container-fluid">
 			<h3>Arsenal</h3>
+			<div class="error" ng-show="error">
+				{{error}}
+			</div>
 			<div ng-show="matches">
 				<table class="table table-striped table-hover table-bordered">
 						<thead>
