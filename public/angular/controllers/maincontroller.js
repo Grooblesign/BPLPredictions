@@ -13,7 +13,7 @@
 			$scope.matches = response.data;
 		};
   
-		$http.get("/matche").then(onMatches, onError);
+		$http.get("/matches").then(onMatches, onError);
 		
 		$scope.editMatch = function(match) {
 			confirm("Edit this match?");
