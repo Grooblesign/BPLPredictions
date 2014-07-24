@@ -8,6 +8,8 @@ public class Match {
 	private String awayTeam;
 	private String date;
 	private String time;
+	private String score;
+	private String prediction;
 	
 	public int getId() {
 		return id;
@@ -35,5 +37,26 @@ public class Match {
 	}
 	public void setDate(String value) {
 		date = value;
+	}
+	
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String value) {
+		time = value;
+	}
+	
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String value) {
+		score = value;
+	}
+
+	public String getPrediction() {
+		return prediction;
+	}
+	public void setPrediction(String value) {
+		prediction = value;
 	}
 }

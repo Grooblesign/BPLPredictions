@@ -10,6 +10,10 @@
 		};
   
 		$http.get("/matches").then(onMatches);
+		
+		$scope.editMatch = function(match) {
+			confirm("Edit this match?");
+		};
     };
 
     app.controller("MainController", MainController);

@@ -1,9 +1,9 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import models.Match;
+import services.MatchesService;
 
 import play.*;
 import play.mvc.*;
@@ -20,22 +20,8 @@ public class Application extends Controller {
     }
 
     public static Result matches() {
-		List<Match> matches = new ArrayList<Match>();
+		MatchesService service = new MatchesService();
 		
-		Match match = new Match();
-		match.setId(1);
-		match.setHomeTeam("Arsenal");
-		match.setAwayTeam("Crystal Palace");
-		match.setDate("16-Aug-2014");
-		matches.add(match);
-		
-		match = new Match();
-		match.setId(2);
-		match.setHomeTeam("Everton");
-		match.setAwayTeam("Arsenal");
-		match.setDate("23-Aug-2014");
-		matches.add(match);
-
-		return ok(json.toJson(matches));
+		return ok(json.toJson(service.findAll()));
     }
 }

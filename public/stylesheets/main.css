@@ -11,6 +11,19 @@ h1 {
 	background-color: #162726;
 	color: white;
 	padding-bottom: .75em;
-	padding-left: 0em;
+	padding-left: .5em;
 	padding-top: .75em;
+}
+table {
+    border-collapse: ccollapse;
+    border-style: solid;
+    border-width: thin;
+	margin-left: 1em;
+}
+td {
+	padding: .75em;
+}
+thead td {
+    #border-style: solid;
+    #border-width: thin;
 }
