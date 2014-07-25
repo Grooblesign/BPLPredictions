@@ -9,13 +9,45 @@ import java.io.FileInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import java.io.FileWriter;
+
 import com.google.gson.stream.JsonReader;
 
 import models.Match;
 
+import play.libs.Json;
 import play.Logger;
 
 public class MatchesService {
+	
+	public void update(String id, String score, String prediction) {
+
+		List<Match> matches = findAll();
+		
+		for (Match match : matches) {
+			if (match.getId() == Integer.parseInt(id)) {
+				match.setScore(score.replace("\"", ""));
+				match.setPrediction(prediction.replace("\"", ""));
+				break;
+			}
+		}
+		
+		try {
+			File f = new File("public/data/scores.json");
+			if (!f.exists()) {
+				f.createNewFile();
+			}
+			
+			FileWriter fw = new FileWriter(f);
+			
+			Json json = new Json();
+			fw.write(json.toJson(matches).toString());
+			
+			fw.close();
+		} catch (Exception ex) {
+			Logger.info(ex.getMessage());
+		}
+	}
 	
 	public List<Match> findAll() {
 		
@@ -24,7 +56,11 @@ public class MatchesService {
 		InputStream in = null;
 		
 		try {
-			File f = new File("public/data/matches.json");
+			File f = new File("public/data/scores.json");
+			
+			if (!f.exists()) {
+				f = new File("public/data/matches.json");
+			}
 			
 			if (f.exists()) {
 				Logger.info("Loading file - " + f.getCanonicalPath());
@@ -68,8 +104,6 @@ public class MatchesService {
    
 	public Match readMatch(JsonReader reader) throws IOException {
 		
-		Logger.info("readMatch >");
-		
 		Match match = new Match();
 		
 		reader.beginObject();
@@ -95,8 +129,6 @@ public class MatchesService {
 			}
 		}
 		reader.endObject();
-		
-		Logger.info("readMatch <");
 		
 		return match;
 	}

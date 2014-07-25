@@ -5,6 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /matches                    controllers.Application.matches()
+GET     /matches/:teamName          controllers.Application.matchesForTeam(teamName)
+POST    /match/:matchId             controllers.Application.postMatch(matchId)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
